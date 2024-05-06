@@ -47,31 +47,51 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>PHP Hotel</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         </head>
         <body>
+            <header>
+                <div class="container">
+                    <h1 class=text-center> HOTEL IN ZONA </h1>
 
-        <?php
-        for($i = 0; $i < count($hotels); $i++) {
-            $hotel = $hotels[$i];
+                </div>
+            </header>
+            <main>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Descrizione</th>
+                            <th scope="col">Parcheggio</th>
+                            <th scope="col">Rating</th>
+                            <th scope="col">Distanza dal centro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    for($i = 0; $i < count($hotels); $i++) {
+                        $hotel = $hotels[$i];
 
-            $name = $hotel['name'];
-            $description = $hotel['description'];
-            $hotel['parking'] == true ? $has_parking = "yes" : $has_parking = "no";
-            $vote = $hotel['vote'];
-            $distance_to_center = $hotel['distance_to_center'];
-        ?>
-            
-            <p>
-                <?php echo "Hotel name: $name <br>" ?>
-                <?php echo "Hotel description: $description <br>"?>
-                <?php echo "The hotel has parking: $has_parking <br>"?>
-                <?php echo "The hotel's rating is $vote <br>"?>
-                <?php echo "The hotel's distance to the center is $distance_to_center km <br>"?>
-            </p>
+                        $name = $hotel['name'];
+                        $description = $hotel['description'];
+                        $hotel['parking'] == true ? $has_parking = "sì" : $has_parking = "no";
+                        $vote = $hotel['vote'];
+                        $distance_to_center = $hotel['distance_to_center'];
+                    ?>
+                        <tr>
+                            <td><?php echo $name ?></td>
+                            <td><?php echo $description ?></td>
+                            <td><?php echo $has_parking ?></td>
+                            <td><?php echo $vote ?></td>
+                            <td><?php echo "$distance_to_center km" ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                    </tbody>
+                </table>
 
-        <?php
-        }
-        ?>
+            </main>
             
         </body>
         </html>
